@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '../supabaseClient'
+import { Grid, Typography, Box, Button } from '@mui/material'
 import './AccountList.css'
 
 export default function AccountList() {
@@ -63,11 +64,17 @@ export default function AccountList() {
     window.scrollTo(0, 0)
   }
 
-  const handleAccountClick = (account) => {
+  const handleAccountClick = (e, account) => {
+    e.preventDefault()
+    e.stopPropagation()
     setSelectedAccount(account)
   }
 
-  const closeModal = () => {
+  const closeModal = (e) => {
+    if (e) {
+      e.preventDefault()
+      e.stopPropagation()
+    }
     setSelectedAccount(null)
   }
 
@@ -75,68 +82,76 @@ export default function AccountList() {
   if (error) return <div className="error">Error: {error}</div>
 
   return (
-    <div className="account-list">
-      <h1>Nintendo Accounts</h1>
-      <div className="accounts-grid">
+    <Box className="account-list">
+      <Typography variant="h4" component="h1" gutterBottom>
+        Nintendo Accounts
+      </Typography>
+
+      <Grid container spacing={3}>
         {currentAccounts.map(account => {
           const highestGame = getHighestPricedGame(account.account_transactions)
           const gameImage = highestGame ? getGameImage(highestGame.item_name, highestGame.cover_image) : null
           
           return (
-            <div 
-              key={account.nickname} 
-              className="account-card"
-              onClick={() => handleAccountClick(account)}
-            >
-              {gameImage && (
-                <div className="game-cover">
-                  <img src={gameImage} alt={highestGame?.item_name || 'No game name found'} />
-                </div>
-              )}
-              <div className="account-content">
-                <div className="account-header">
-                  <h2>{highestGame?.item_name || 'No game name found'}</h2>
-                  <div className="account-prices">
-                    <span>Price: ${account.final_price}</span>
+            <Grid key={account.nickname} xs={12} sm={6} md={4} lg={3}>
+              <div 
+                className="account-card"
+                onClick={(e) => handleAccountClick(e, account)}
+              >
+                {gameImage && (
+                  <div className="game-cover">
+                    <img src={gameImage} alt={highestGame?.item_name || 'No game name found'} />
+                  </div>
+                )}
+                <div className="account-content">
+                  <div className="account-header">
+                    <Typography variant="h6">
+                      {highestGame?.item_name || 'No game name found'}
+                    </Typography>
+                    <div className="account-prices">
+                      <Typography variant="body2">
+                        Price: ${account.final_price}
+                      </Typography>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </Grid>
           )
         })}
-      </div>
+      </Grid>
 
       {/* Pagination Controls */}
       {totalPages > 1 && (
-        <div className="pagination">
-          <button 
+        <Box className="pagination">
+          <Button 
             onClick={() => handlePageChange(currentPage - 1)}
             disabled={currentPage === 1}
-            className="pagination-button"
+            variant="outlined"
           >
             Previous
-          </button>
+          </Button>
           
-          <div className="page-numbers">
+          <Box className="page-numbers">
             {[...Array(totalPages)].map((_, index) => (
-              <button
+              <Button
                 key={index + 1}
                 onClick={() => handlePageChange(index + 1)}
-                className={`pagination-button ${currentPage === index + 1 ? 'active' : ''}`}
+                variant={currentPage === index + 1 ? "contained" : "outlined"}
               >
                 {index + 1}
-              </button>
+              </Button>
             ))}
-          </div>
+          </Box>
 
-          <button 
+          <Button 
             onClick={() => handlePageChange(currentPage + 1)}
             disabled={currentPage === totalPages}
-            className="pagination-button"
+            variant="outlined"
           >
             Next
-          </button>
-        </div>
+          </Button>
+        </Box>
       )}
 
       {/* Account Details Modal */}
@@ -144,50 +159,72 @@ export default function AccountList() {
         <div className="modal-overlay" onClick={closeModal}>
           <div className="modal-content" onClick={e => e.stopPropagation()}>
             <button className="modal-close" onClick={closeModal}>×</button>
-            <h2>{selectedAccount.nickname}</h2>
+            <Typography variant="h5" gutterBottom>
+              {selectedAccount.nickname}
+            </Typography>
             
-            <div className="modal-section">
-              <h3>Games</h3>
-              <div className="games-grid">
+            <Box className="modal-section">
+              <Typography variant="h6" gutterBottom>
+                Games
+              </Typography>
+              <Grid container spacing={2}>
                 {selectedAccount.account_transactions
                   .filter(t => t.type === 'game')
                   .map(game => (
-                    <div key={game.item_name} className="game-item">
-                      { 
-                        <div className="cover-container">
-                          <img 
-                            src={getGameImage(game.item_name, game.cover_image)} 
-                            alt={game.item_name}
-                          />
+                    <Grid key={game.item_name} xs={12} sm={6} md={4}>
+                      <div className="game-item">
+                        {game.cover_image && (
+                          <div className="cover-container">
+                            <img 
+                              src={getGameImage(game.item_name, game.cover_image)} 
+                              alt={game.item_name}
+                            />
+                          </div>
+                        )}
+                        <div className="game-info">
+                          <Typography variant="subtitle1">
+                            {game.item_name}
+                          </Typography>
+                          <Typography variant="body2">
+                            Price: ${game.price}
+                          </Typography>
+                          <Typography variant="body2">
+                            Purchased: {new Date(game.purchase_date).toLocaleDateString()}
+                          </Typography>
                         </div>
-                      }
-                      <div className="game-info">
-                        <h4>{game.item_name}</h4>
-                        <p>Price: ${game.price}</p>
-                        <p>Purchased: {new Date(game.purchase_date).toLocaleDateString()}</p>
                       </div>
-                    </div>
+                    </Grid>
                   ))}
-              </div>
-            </div>
+              </Grid>
+            </Box>
 
-            <div className="modal-section">
-              <h3>DLC</h3>
-              <div className="dlc-list">
+            <Box className="modal-section">
+              <Typography variant="h6" gutterBottom>
+                DLC
+              </Typography>
+              <Grid container spacing={2}>
                 {selectedAccount.account_transactions
                   .filter(t => t.type === 'dlc')
                   .map(dlc => (
-                    <div key={dlc.item_name} className="dlc-item">
-                      <h4>{dlc.item_name}</h4>
-                      <p>Price: ${dlc.price}</p>
-                      <p>Purchased: {new Date(dlc.purchase_date).toLocaleDateString()}</p>
-                    </div>
+                    <Grid key={dlc.item_name} xs={12} sm={6} md={4}>
+                      <div className="dlc-item">
+                        <Typography variant="subtitle1">
+                          {dlc.item_name}
+                        </Typography>
+                        <Typography variant="body2">
+                          Price: ${dlc.price}
+                        </Typography>
+                        <Typography variant="body2">
+                          Purchased: {new Date(dlc.purchase_date).toLocaleDateString()}
+                        </Typography>
+                      </div>
+                    </Grid>
                   ))}
-              </div>
-            </div>
+              </Grid>
+            </Box>
           </div>
         </div>
       )}
-    </div>
+    </Box>
   )
 }
