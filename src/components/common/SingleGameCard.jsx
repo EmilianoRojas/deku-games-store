@@ -20,7 +20,7 @@ const SingleGameCard = ({ account }) => {
           className="absolute top-0 left-0 w-full h-full object-contain"
           onError={(e) => {
             e.target.onerror = null;
-            e.target.src = '/game-covers/game-placeholder.png';
+            e.target.src = '/deku-games-store/game-covers/game-placeholder.png';
           }}
         />
       </figure>
