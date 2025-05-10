@@ -56,7 +56,7 @@ const Footer = () => {
             </h3>
             <div className="space-y-2">
               <p className="text-base-content/70 text-sm">
-                Email: support@dekugames.com
+                Email: soporte@dekugames.store
               </p>
               <p className="text-base-content/70 text-sm">
                 Discord: DekuGames

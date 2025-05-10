@@ -25,7 +25,8 @@ const Home = () => {
             price,
             purchase_date,
             type,
-            cover_image
+            cover_image,
+            featured
           )
         `)
 
@@ -43,7 +44,7 @@ const Home = () => {
       // Filter single games and sort by price
       const filteredSingleGames = data
         .filter(account => {
-          const games = account.account_transactions.filter(t => t.type === 'game');
+          const games = account.account_transactions.filter(t => t.type === 'game' && t.featured === true);
           return games.length === 1; // Only single games
         })
         .sort((a, b) => a.final_price - b.final_price)
@@ -71,6 +72,9 @@ const Home = () => {
           <p className="text-lg md:text-2xl mb-6">
             Descubre increíbles juegos y DLCs para tu Switch
           </p>
+          <p className="text-lg md:text-2xl mb-6">
+          Tu fuente confiable para juegos y DLCs de Switch. Ofrecemos cuentas auténticas con compras verificadas.
+          </p>
           <button
             className="btn btn-primary text-base md:text-lg w-fit"
             onClick={() => navigate('/games')}
@@ -79,51 +83,8 @@ const Home = () => {
           </button>
         </div>
       </div>
-
-      {/* Featured Accounts Section */}
-      <div className="max-w-7xl mx-auto px-4 mb-12 md:mb-16">
-        <h2 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-base-content">
-          Ofertas Especiales
-        </h2>
-        {loading ? (
-          <div className="flex justify-center">
-            <span className="loading loading-spinner loading-lg text-primary"></span>
-          </div>
-        ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-6">
-            {featuredAccounts.map((account) => (
-              <div key={account.id}>
-                <AccountCard account={account} />
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
-
-      {/* Single Games Section */}
-      <div className="bg-base-200 py-12 md:py-16">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-base-content">
-            Juegos Individuales
-          </h2>
-          {loading ? (
-            <div className="flex justify-center">
-              <span className="loading loading-spinner loading-lg text-primary"></span>
-            </div>
-          ) : (
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-6">
-              {singleGames.map((account) => (
-                <div key={account.id}>
-                  <SingleGameCard account={account} />
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* Categories Section */}
-      <div className="bg-base-100 py-12 md:py-16">
+       {/* Categories Section */}
+       <div className="bg-base-100 py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-base-content">
             Explorar por Categoría
@@ -158,6 +119,50 @@ const Home = () => {
           </div>
         </div>
       </div>
+
+      {/* Featured Accounts Section */}
+      <div className="max-w-7xl mx-auto px-4 mb-12 md:mb-16">
+        <h2 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-base-content">
+          Packs de Juegos en Oferta
+        </h2>
+        {loading ? (
+          <div className="flex justify-center">
+            <span className="loading loading-spinner loading-lg text-primary"></span>
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-6">
+            {featuredAccounts.map((account) => (
+              <div key={account.id}>
+                <AccountCard account={account} />
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Single Games Section */}
+      <div className="bg-base-200 py-12 md:py-16">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-base-content">
+            Juegos Individuales en Oferta
+          </h2>
+          {loading ? (
+            <div className="flex justify-center">
+              <span className="loading loading-spinner loading-lg text-primary"></span>
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-6">
+              {singleGames.map((account) => (
+                <div key={account.id}>
+                  <SingleGameCard account={account} />
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+
+     
     </div>
   );
 };

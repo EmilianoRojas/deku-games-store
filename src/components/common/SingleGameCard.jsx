@@ -26,12 +26,14 @@ const SingleGameCard = ({ account }) => {
       </figure>
       <div className="card-body p-4">          
         <div className="flex flex-col gap-2">
-          <h3 className="font-bold break-words">
-            {game.item_name}
+          <h3 className="font-bold">
+            {game.item_name.length > 21 
+              ? game.item_name.slice(0, 21) + '...'
+              : game.item_name}
           </h3>
           {dlcCount > 0 && (
             <div className="badge badge-secondary self-start">
-              {dlcCount} DLCs
+              {dlcCount === 1 ? `+${dlcCount} DLC` : `+${dlcCount} DLCs`}
             </div>
           )}
         </div>
