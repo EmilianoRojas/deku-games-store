@@ -42,7 +42,6 @@ export default function AccountList() {
             cover_image
           )
         `)
-        .order('nickname')
 
       if (error) throw error
       setAccounts(data)

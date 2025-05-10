@@ -2,36 +2,121 @@ import { useState } from 'react';
 
 const faqItems = [
   {
-    question: 'What is included in a Nintendo account purchase?',
-    answer: 'Each Nintendo account comes with a collection of games and DLCs that have been previously purchased. The exact contents vary by account, but you can see the full list of games and DLCs in the account details before purchasing.'
+    question: '¿CÓMO FUNCIONA?',
+    answer: (
+      <>
+        <p>¡Descubre nuestro exclusivo sistema de cuentas primarias para Nintendo Switch! 🎮</p>
+        <p>Adquiere tus juegos favoritos de manera rápida y económica 🌟.</p>
+        <ol className="list-decimal list-inside mt-4">
+          <li>Navega en nuestro catálogo y elige el pack de juegos que más te guste 🕹</li>
+          <li>Confirma tu compra ✅ y accede a tu nueva cuenta para activar los juegos en tu consola 🎉</li>
+        </ol>
+        <p className="mt-4">¡Así de simple! 😎🔝</p>
+      </>
+    )
   },
   {
-    question: 'How do I access the games after purchase?',
-    answer: 'After your purchase is confirmed, you will receive the account credentials via email. You can then log in to your Nintendo Switch using these credentials to access all the games and DLCs included in the account.'
+    question: '¿LOS JUEGOS SON ORIGINALES? 🕹',
+    answer: (
+      <>
+        <p>¡Así es! 🌟</p>
+        <p>Puedes descargar los juegos directamente desde la Eshop oficial de Nintendo 🛒, asegurándote de que no hay ningún riesgo de baneo 🚫 y sin necesidad de chipear tu consola 🔒😊.</p>
+      </>
+    )
   },
   {
-    question: 'Is it safe to purchase Nintendo accounts?',
-    answer: 'Yes, all our accounts are verified and come with a guarantee. We ensure that all accounts are legitimate and have been properly purchased. We also provide support in case of any issues with accessing the games.'
+    question: '¿CUÁNTO TIEMPO SE TARDA EN VINCULAR LA CUENTA? ⏳',
+    answer: <p>¡En menos de 10 minutos tendrás la cuenta en tu consola!⚡️</p>
   },
   {
-    question: 'Can I play the games online?',
-    answer: 'Yes, you can play the games online as long as you have an active Nintendo Switch Online subscription. The account purchase includes the games, but the online subscription is separate and needs to be purchased from Nintendo.'
+    question: '¿TIENEN REFERENCIAS DE CLIENTES? 🌟',
+    answer: (
+      <>
+        <p>¡Por supuesto! 💯</p>
+        <p>Hemos construido una vibrante comunidad de entusiastas, respaldada por una sólida base de clientes satisfechos que confían y certifican nuestra calidad. 🙌🏻</p>
+        <p>No te quedes con las ganas, echa un vistazo a todas las referencias de nuestros clientes en este link</p>
+      </>
+    )
   },
   {
-    question: 'What payment methods do you accept?',
-    answer: 'We accept various payment methods including credit cards, PayPal, and cryptocurrency. All payments are processed securely through our payment providers.'
+    question: '🌍 ¿EN QUÉ PAÍS PUEDO COMPRAR? 🌍',
+    answer: (
+      <>
+        <p>Puedes comprar desde:</p>
+        <ul className="list-disc list-inside mt-4">
+          <li>Venezuela 🇻🇪</li>
+          <li>Colombia 🇨🇴</li>
+          <li>Argentina 🇦🇷</li>
+          <li>Chile 🇨🇱</li>
+          <li>Estados Unidos 🇺🇸</li>
+        </ul>
+        <p className="mt-4">📦 Tomamos todos nuestros pedidos de manera online 🖥. ¡Mantente atento! 🚀</p>
+      </>
+    )
   },
   {
-    question: 'Can I transfer the games to my main Nintendo account?',
-    answer: 'No, the games are tied to the Nintendo account they were purchased on. You cannot transfer them to another account. However, you can use the purchased account on your Nintendo Switch alongside your main account.'
+    question: '💳 Nuestros Métodos de Pago 💳',
+    answer: (
+      <>
+        <p>Contamos con las siguientes formas de pago:</p>
+        <div className="divider"></div>
+        <div className="space-y-4">
+          <div>
+            <p className="font-semibold">📌 Transferencia Bancaria</p>
+          </div>
+          <div className="divider"></div>
+          <div>
+            <p className="font-semibold">📌 Pago Movil (Promedio)</p>
+            {/* <ul className="list-disc list-inside mt-2">
+              <li>C.I: 24391294</li>
+              <li>TLF: 04125900162</li>
+              <li>Banco: (0102) Venezuela</li>
+            </ul> */}
+          </div>
+          <div className="divider"></div>
+          <div>
+            <p className="font-semibold">📌 Binance (USDT)</p>
+          </div>
+        </div>
+        {/* <p className="mt-4">¡Elige la opción que más te convenga y disfruta de tus juegos sin complicaciones! 🎮✨</p> */}
+      </>
+    )
   },
   {
-    question: 'What is your refund policy?',
-    answer: 'We offer a 24-hour refund policy if you are unable to access the games or if there are any issues with the account. Please contact our support team for assistance with refunds.'
+    question: '⚠️Términos y Condiciones de Garantía⚠️',
+    answer: (
+      <>
+        <p>Asegúrate de contar con WiFi y suficiente espacio en la memoria para descargar los juegos.</p>
+        <ol className="list-decimal list-inside mt-4 space-y-2">
+          <li>No eliminar la cuenta comprada</li>
+          <li>No entrar más de una (1) vez a la EShop</li>
+          <li>Jugar con su usuario personal</li>
+          <li>No cancelar las descargas manualmente</li>
+          <li>No intentar cambiar información de la cuenta</li>
+          <li>Si usted juega en la cuenta adquirida corre riesgo de dañar todos los juegos y pierde la garantía de manera inmediata</li>
+          <li>Descargue todos los juegos de una vez, no intente jugar antes de descargar todos los juegos</li>
+          <li>No intente borrar un juego para descargarlo después</li>
+          <li>No se hacen transferencias de cuentas entre consolas</li>
+          <li>No descargue otro juego que no esté en la lista del pack que adquirió</li>
+          {/* <li>IMPORTANTE ⚠️: Juegue siempre en modo avión o desconectado de internet (Solo con su usuario personal)</li> */}
+        </ol>
+        <p className="mt-4">Ofrecemos garantía de 1️⃣ mes. ¿Esto qué quiere decir? Que damos soporte ante algún error, mal uso o falla. Pasado ese tiempo ya no damos ningún soporte a la cuenta.</p>
+        <p className="mt-4 font-semibold">NOTA: Sólo aplica al usuario recién comprado.</p>
+      </>
+    )
   },
   {
-    question: 'How long does it take to receive the account details?',
-    answer: 'Account details are typically sent within 1-2 hours after purchase. In rare cases, it may take up to 24 hours. You will receive an email with the account credentials and instructions.'
+    question: '⚠️ Importante: Actualización de Nintendo ⚠️',
+    answer: (
+      <>
+        <p>Estimado/a cliente,</p>
+        <p className="mt-4">Queremos informarte sobre una situación reciente relacionada con la actualización 20.0 de Nintendo, tanto en sus servidores como en las consolas. Debido a esta actualización, te recomendamos desconectar temporalmente tu consola de internet y disfrutar de tus juegos únicamente sin conexión.</p>
+        <p className="mt-4">Esta medida preventiva tiene como objetivo evitar cualquier posible inconveniente con el enlace a tus juegos hasta que podamos ofrecerte una solución definitiva.</p>
+        <p className="mt-4">Estamos trabajando diligentemente para encontrar una solución lo antes posible y te mantendremos informado sobre cualquier novedad.</p>
+        <p className="mt-4">Agradecemos de antemano tu comprensión y paciencia ante esta situación. No dudes en contactarnos si tienes alguna pregunta.</p>
+        <p className="mt-4">Atentamente,<br />Equipo @DekuGames</p>
+      </>
+    )
   }
 ];
 
@@ -45,51 +130,23 @@ const FAQ = () => {
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold text-center mb-8">
-        Frequently Asked Questions
+        Preguntas Frecuentes
       </h1>
       
       <div className="space-y-4">
         {faqItems.map((item, index) => (
-          <div 
-            key={index}
-            className="border border-gray-200 rounded-lg overflow-hidden"
-          >
-            <button
-              className="w-full px-6 py-4 text-left bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-              onClick={() => toggleAccordion(index)}
-            >
-              <div className="flex justify-between items-center">
-                <h3 className="text-lg font-semibold text-gray-900">
-                  {item.question}
-                </h3>
-                <svg
-                  className={`w-6 h-6 transform transition-transform duration-200 ${
-                    openIndex === index ? 'rotate-180' : ''
-                  }`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </div>
-            </button>
-            
-            <div
-              className={`px-6 transition-all duration-200 ease-in-out ${
-                openIndex === index
-                  ? 'max-h-96 opacity-100 py-4'
-                  : 'max-h-0 opacity-0'
-              }`}
-            >
-              <p className="text-gray-600">
-                {item.answer}
-              </p>
+          <div key={index} className="collapse collapse-arrow bg-base-200">
+            <input 
+              type="radio" 
+              name="faq-accordion" 
+              checked={openIndex === index}
+              onChange={() => toggleAccordion(index)}
+            />
+            <div className="collapse-title text-xl font-medium">
+              {item.question}
+            </div>
+            <div className="collapse-content">
+              {item.answer}
             </div>
           </div>
         ))}
@@ -97,12 +154,12 @@ const FAQ = () => {
 
       <div className="mt-8 text-center">
         <p className="text-gray-600">
-          Still have questions? Contact our support team at{' '}
+          ¿Tienes preguntas? Contacta a nuestro equipo de soporte en{' '}
           <a 
-            href="mailto:support@nintendostore.com"
+            href="mailto:soporte@dekugames.com"
             className="text-blue-600 hover:text-blue-800 underline"
           >
-            support@nintendostore.com
+            soporte@dekugames.com
           </a>
         </p>
       </div>
