@@ -16,6 +16,8 @@ concurrency:
 
 jobs:
   build:
+    environment:
+      name: github-pages
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -29,6 +31,11 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Debug Environment Variables
+        run: |
+          echo "Checking if VITE_SUPABASE_URL is set: ${{ secrets.VITE_SUPABASE_URL != '' }}"
+          echo "Checking if VITE_SUPABASE_ANON_KEY is set: ${{ secrets.VITE_SUPABASE_ANON_KEY != '' }}"
 
       - name: Build
         run: npm run build
