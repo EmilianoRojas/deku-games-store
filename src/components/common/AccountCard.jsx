@@ -53,12 +53,12 @@ const AccountCard = ({ account }) => {
         <figure className="relative pt-[120%] sm:pt-[162%]">
           {topGames.length === 1 ? (
             <img
-              src={`/deku-games-store/game-covers/${topGames[0].cover_image}.png`}
+              src={`/game-covers/${topGames[0].cover_image}.png`}
               alt={topGames[0].item_name}
               className="absolute top-0 left-0 w-full h-full object-contain"
               onError={(e) => {
                 e.target.onerror = null;
-                e.target.src = '/deku-games-store/game-covers/game-placeholder.png';
+                e.target.src = '/game-covers/game-placeholder.png';
               }}
             />
           ) : topGames.length > 1 ? (
@@ -68,24 +68,24 @@ const AccountCard = ({ account }) => {
             }}>
               <div className="w-full h-full">
                 <img
-                  src={`/deku-games-store/game-covers/${topGames[0].cover_image}.png`}
+                  src={`/game-covers/${topGames[0].cover_image}.png`}
                   alt={topGames[0].item_name}
                   className="w-full h-full object-contain"
                   onError={(e) => {
                     e.target.onerror = null;
-                    e.target.src = '/deku-games-store/game-covers/game-placeholder.png';
+                    e.target.src = '/game-covers/game-placeholder.png';
                   }}
                 />
               </div>
               {topGames.length > 1 && (
                 <div className="w-full h-full">
                   <img
-                    src={`/deku-games-store/game-covers/${topGames[1].cover_image}.png`}
+                    src={`/game-covers/${topGames[1].cover_image}.png`}
                     alt={topGames[1].item_name}
                     className="w-full h-full object-contain"
                     onError={(e) => {
                       e.target.onerror = null;
-                      e.target.src = '/deku-games-store/game-covers/game-placeholder.png';
+                      e.target.src = '/game-covers/game-placeholder.png';
                     }}
                   />
                 </div>
@@ -93,12 +93,12 @@ const AccountCard = ({ account }) => {
               {topGames.length > 2 && (
                 <div className="w-full h-full">
                   <img
-                    src={`/deku-games-store/game-covers/${topGames[2].cover_image}.png`}
+                    src={`/game-covers/${topGames[2].cover_image}.png`}
                     alt={topGames[2].item_name}
                     className="w-full h-full object-contain"
                     onError={(e) => {
                       e.target.onerror = null;
-                      e.target.src = '/deku-games-store/game-covers/game-placeholder.png';
+                      e.target.src = '/game-covers/game-placeholder.png';
                     }}
                   />
                 </div>
@@ -106,12 +106,12 @@ const AccountCard = ({ account }) => {
               {topGames.length > 3 && (
                 <div className="w-full h-full">
                   <img
-                    src={`/deku-games-store/game-covers/${topGames[3].cover_image}.png`}
+                    src={`/game-covers/${topGames[3].cover_image}.png`}
                     alt={topGames[3].item_name}
                     className="w-full h-full object-contain"
                     onError={(e) => {
                       e.target.onerror = null;
-                      e.target.src = '/deku-games-store/game-covers/game-placeholder.png';
+                      e.target.src = '/game-covers/game-placeholder.png';
                     }}
                   />
                 </div>
@@ -119,7 +119,7 @@ const AccountCard = ({ account }) => {
             </div>
           ) : (
             <img
-              src="/deku-games-store/game-covers/game-placeholder.png"
+              src="/game-covers/game-placeholder.png"
               alt="No games"
               className="absolute top-0 left-0 w-full h-full object-contain"
             />
@@ -182,12 +182,12 @@ const AccountCard = ({ account }) => {
                     title: game.item_name,
                     description: `Purchased on ${new Date(game.purchase_date).toLocaleDateString()}`,
                     price: game.price,
-                    coverImage: `/deku-games-store/game-covers/${game.cover_image}.png`,
+                    coverImage: `/game-covers/${game.cover_image}.png`,
                     type: 'game',
                     purchaseDate: game.purchase_date,
                     onError: (e) => {
                       e.target.onerror = null;
-                      e.target.src = '/deku-games-store/game-covers/game-placeholder.png';
+                      e.target.src = '/game-covers/game-placeholder.png';
                     }
                   }} />
                 </div>

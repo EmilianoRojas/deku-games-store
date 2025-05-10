@@ -62,7 +62,7 @@ const Home = () => {
     <div>
       {/* Hero Section */}
       <div className="relative bg-base-300 text-base-content mb-8 bg-cover bg-center bg-no-repeat h-[300px] md:h-[400px]"
-           style={{ backgroundImage: 'url(/deku-games-store/hero-bg.jpg)' }}>
+           style={{ backgroundImage: 'url(/hero-bg.jpg)' }}>
         <div className="absolute inset-0 bg-base-300 bg-opacity-70" />
         <div className="relative h-full flex flex-col justify-center px-4 md:px-6 md:pr-0">
           <h1 className="text-3xl md:text-5xl font-bold mb-4">
