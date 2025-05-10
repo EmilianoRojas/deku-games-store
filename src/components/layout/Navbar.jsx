@@ -65,7 +65,7 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">
           <li><Link to="/games">Juegos</Link></li>
           <li><Link to="/game-packs">Packs de Juegos</Link></li>
-          <li><Link to="/dlcs">DLCs</Link></li>
+          {/* <li><Link to="/dlcs">DLCs</Link></li> */}
           <li><Link to="/faq">FAQ</Link></li>
         </ul>
       </div>

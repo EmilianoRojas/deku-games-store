@@ -20,7 +20,7 @@ const GameCard = ({ game }) => {
         <div className="flex gap-2 mt-auto">
           {game.type === 'game' && (
             <div className="badge badge-primary">
-              Game
+              Juego
             </div>
           )}
           {game.type === 'dlc' && (

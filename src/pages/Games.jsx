@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
-import AccountCard from '../components/common/AccountCard';
 import { supabase } from '../supabaseClient';
+import SingleGameCard from '../components/common/SingleGameCard';
 
 const Games = () => {
   const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
-  const [sortBy, setSortBy] = useState('price_asc');
+  const [sortBy, setSortBy] = useState('name_asc');
   const [currentPage, setCurrentPage] = useState(1);
   const gamesPerPage = 12;
 
@@ -85,33 +85,33 @@ const Games = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-2 text-base-content">
-        Games
+    <div className="max-w-7xl mx-auto px-4 py-6 md:py-8">
+      <h1 className="text-2xl md:text-3xl font-bold mb-2 text-base-content">
+        Juegos Individuales
       </h1>
 
-      <p className="text-base-content/70 mb-8">
-        Browse our collection of Nintendo Switch games
+      <p className="text-base-content/70 mb-6 md:mb-8 text-sm md:text-base">
+        Explora nuestra colección de juegos de Switch
       </p>
 
       {/* Filters and Search */}
-      <div className="mb-8 flex flex-wrap gap-4">
+      <div className="mb-6 md:mb-8 flex flex-col sm:flex-row gap-3 md:gap-4">
         <input
           type="text"
           placeholder="Search Games"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="input input-bordered flex-grow min-w-[200px]"
+          className="input input-bordered w-full sm:flex-grow"
         />
         <select
           value={sortBy}
           onChange={(e) => setSortBy(e.target.value)}
-          className="select select-bordered min-w-[200px]"
+          className="select select-bordered w-full sm:w-[200px]"
         >
-          <option value="price_asc">Price: Low to High</option>
-          <option value="price_desc">Price: High to Low</option>
-          <option value="name_asc">Name: A to Z</option>
-          <option value="name_desc">Name: Z to A</option>
+          <option value="name_asc">Nombre: A a Z</option>
+          <option value="price_asc">Precio: Menor a Mayor</option>
+          <option value="price_desc">Precio: Mayor a Menor</option>
+          <option value="name_desc">Nombre: Z a A</option>
         </select>
       </div>
 
@@ -122,23 +122,23 @@ const Games = () => {
         </div>
       ) : (
         <>
-          <div className="flex flex-wrap gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-6">
             {currentGames.map((game) => (
-              <div key={game.id} className="flex-[0_0_calc(20%-24px)]">
-                <AccountCard account={game} />
+              <div key={game.id}>
+                <SingleGameCard account={game} />
               </div>
             ))}
           </div>
 
           {/* Pagination */}
           {totalPages > 1 && (
-            <div className="flex justify-center mt-8">
+            <div className="flex justify-center mt-6 md:mt-8">
               <div className="join">
                 {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
                   <button
                     key={page}
                     onClick={() => handlePageChange(page)}
-                    className={`join-item btn ${
+                    className={`join-item btn btn-sm md:btn-md ${
                       currentPage === page ? 'btn-primary' : 'btn-ghost'
                     }`}
                   >

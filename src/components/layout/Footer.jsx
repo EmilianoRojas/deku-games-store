@@ -8,18 +8,18 @@ const Footer = () => {
           {/* About Us Section */}
           <div>
             <h3 className="text-lg font-bold mb-4">
-              About Us
+              Sobre Nosotros
             </h3>
             <p className="text-base-content/70 text-sm">
-              Your trusted source for Nintendo games and DLCs. We provide authentic
-              accounts with verified purchases.
+              Tu fuente confiable para juegos y DLCs de Switch. Ofrecemos
+              cuentas auténticas con compras verificadas.
             </p>
           </div>
           
           {/* Quick Links Section */}
           <div>
             <h3 className="text-lg font-bold mb-4">
-              Quick Links
+              Accesos Rápidos
             </h3>
             <div className="space-y-2">
               <Link 
@@ -34,12 +34,12 @@ const Footer = () => {
               >
                 Game Packs
               </Link>
-              <Link 
+              {/* <Link 
                 to="/dlcs" 
                 className="link link-hover block text-base-content/70 hover:text-base-content transition-colors"
               >
                 DLCs
-              </Link>
+              </Link> */}
               <Link 
                 to="/faq" 
                 className="link link-hover block text-base-content/70 hover:text-base-content transition-colors"
@@ -52,14 +52,14 @@ const Footer = () => {
           {/* Contact Section */}
           <div>
             <h3 className="text-lg font-bold mb-4">
-              Contact
+              Contacto
             </h3>
             <div className="space-y-2">
               <p className="text-base-content/70 text-sm">
-                Email: support@nintendostore.com
+                Email: support@dekugames.com
               </p>
               <p className="text-base-content/70 text-sm">
-                Discord: NintendoStore
+                Discord: DekuGames
               </p>
             </div>
           </div>
@@ -68,7 +68,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="mt-8 pt-8 border-t border-base-content/20">
           <p className="text-center text-base-content/50 text-sm">
-            © {new Date().getFullYear()} Nintendo Store. All rights reserved.
+            © {new Date().getFullYear()} DekuGames Store. All rights reserved.
           </p>
         </div>
       </div>

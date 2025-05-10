@@ -6,7 +6,7 @@ const GamePacks = () => {
   const [packs, setPacks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
-  const [sortBy, setSortBy] = useState('price_asc');
+  const [sortBy, setSortBy] = useState('games_asc');
   const [currentPage, setCurrentPage] = useState(1);
   const packsPerPage = 12;
 
@@ -85,33 +85,33 @@ const GamePacks = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-2 text-base-content">
-        Game Packs
+    <div className="max-w-7xl mx-auto px-4 py-6 md:py-8">
+      <h1 className="text-2xl md:text-3xl font-bold mb-2 text-base-content">
+        Packs de Juegos
       </h1>
 
-      <p className="text-base-content/70 mb-8">
-        Get multiple games in one package at a discounted price
+      <p className="text-base-content/70 mb-6 md:mb-8 text-sm md:text-base">
+        Obten múltiples juegos en un solo paquete a un precio reducido
       </p>
 
       {/* Filters and Search */}
-      <div className="mb-8 flex flex-wrap gap-4">
+      <div className="mb-6 md:mb-8 flex flex-col sm:flex-row gap-3 md:gap-4">
         <input
           type="text"
-          placeholder="Search Packs"
+          placeholder="Buscar Packs"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="input input-bordered flex-grow min-w-[200px]"
+          className="input input-bordered w-full sm:flex-grow"
         />
         <select
           value={sortBy}
           onChange={(e) => setSortBy(e.target.value)}
-          className="select select-bordered min-w-[200px]"
+          className="select select-bordered w-full sm:w-[200px]"
         >
-          <option value="price_asc">Price: Low to High</option>
-          <option value="price_desc">Price: High to Low</option>
-          <option value="games_asc">Games: Fewest First</option>
-          <option value="games_desc">Games: Most First</option>
+          <option value="price_asc">Precio: Menor a Mayor</option>
+          <option value="price_desc">Precio: Mayor a Menor</option>
+          <option value="games_asc">Juegos: Menos a Más</option>
+          <option value="games_desc">Juegos: Más a Menos</option>
         </select>
       </div>
 
@@ -122,9 +122,9 @@ const GamePacks = () => {
         </div>
       ) : (
         <>
-          <div className="flex flex-wrap gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-6">
             {currentPacks.map((pack) => (
-              <div key={pack.id} className="flex-[0_0_calc(20%-24px)]">
+              <div key={pack.id}>
                 <AccountCard account={pack} />
               </div>
             ))}
@@ -132,13 +132,13 @@ const GamePacks = () => {
 
           {/* Pagination */}
           {totalPages > 1 && (
-            <div className="flex justify-center mt-8">
+            <div className="flex justify-center mt-6 md:mt-8">
               <div className="join">
                 {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
                   <button
                     key={page}
                     onClick={() => handlePageChange(page)}
-                    className={`join-item btn ${
+                    className={`join-item btn btn-sm md:btn-md ${
                       currentPage === page ? 'btn-primary' : 'btn-ghost'
                     }`}
                   >
