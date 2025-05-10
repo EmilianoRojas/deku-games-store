@@ -15,12 +15,12 @@ const SingleGameCard = ({ account }) => {
     <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-200">
       <figure className="relative pt-[162%]">
         <img
-          src={`/deku-games-store/game-covers/${game.cover_image}.png`}
+          src={`/game-covers/${game.cover_image}.png`}
           alt={game.item_name}
           className="absolute top-0 left-0 w-full h-full object-contain"
           onError={(e) => {
             e.target.onerror = null;
-            e.target.src = '/deku-games-store/game-covers/game-placeholder.png';
+            e.target.src = '/game-covers/game-placeholder.png';
           }}
         />
       </figure>

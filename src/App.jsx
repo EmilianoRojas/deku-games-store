@@ -9,7 +9,7 @@ import FAQ from './pages/FAQ';
 
 function App() {
   return (
-    <Router basename="/deku-games-store">
+    <Router>
       <div className="min-h-screen flex flex-col bg-gray-50 font-['Nintendo_Switch_UI',_Roboto,_Helvetica,_Arial,_sans-serif]">
         <Navbar />
         <main className="flex-grow">
