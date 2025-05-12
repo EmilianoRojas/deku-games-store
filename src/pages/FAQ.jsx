@@ -162,7 +162,7 @@ const FAQ = () => {
         <p className="text-gray-600">
           ¿Tienes preguntas? Contacta a nuestro equipo de soporte en{' '}
           <a 
-            href="mailto:soporte@dekugames.com"
+            href="mailto:soporte@dekugames.store"
             className="text-blue-600 hover:text-blue-800 underline"
           >
             soporte@dekugames.com
