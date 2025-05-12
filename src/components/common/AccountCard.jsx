@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import GameCard from './GameCard';
+import { useCurrency } from '../../context/CurrencyContext';
 
 const AccountCard = ({ account }) => {
   const [open, setOpen] = useState(false);
+  const { convertPrice, getCurrencySymbol } = useCurrency();
 
   const handleClick = () => {
     // Only open modal if there's more than one game
@@ -28,7 +30,7 @@ const AccountCard = ({ account }) => {
       .map(dlc => `- ${dlc.item_name}`)
       .join('\n');
 
-    const message = `Hola! Me interesa comprar la cuenta ${account.id} que incluye:\n\nJuegos:\n${games}${dlcs ? `\n\nDLCs:\n${dlcs}` : ''}\n\nPrecio total: $${account.final_price}`;
+    const message = `Hola! Me interesa comprar la cuenta ${account.id} que incluye:\n\nJuegos:\n${games}${dlcs ? `\n\nDLCs:\n${dlcs}` : ''}\n\nPrecio total: ${getCurrencySymbol()} ${convertPrice(account.final_price, 'account').toLocaleString()}`;
     
     const whatsappUrl = `https://wa.me/+584125900162?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
@@ -140,7 +142,7 @@ const AccountCard = ({ account }) => {
           </div>
           <div className="flex justify-between items-center mt-2">
             <p className="text-lg sm:text-xl font-bold text-neutral">
-              ${account.final_price}
+              {getCurrencySymbol()} {convertPrice(account.final_price, 'account').toLocaleString()}
             </p>
             <button 
               onClick={handleWhatsAppClick}
@@ -226,7 +228,7 @@ const AccountCard = ({ account }) => {
                 Total DLCs: {dlcCount}
               </p>
               <p className="text-lg sm:text-xl font-bold text-neutral mt-4">
-                Precio: ${account.final_price}
+                Precio: {getCurrencySymbol()} {convertPrice(account.final_price, 'account').toLocaleString()}
               </p>
             </div>
             

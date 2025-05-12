@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
+import { useCurrency } from '../../context/CurrencyContext';
 
 const SingleGameCard = ({ account }) => {
+  const { convertPrice, getCurrencySymbol } = useCurrency();
   // Get the single game from the account
   const game = account.account_transactions.find(t => t.type === 'game');
   // const dlcCount = account.account_transactions.filter(t => t.type === 'dlc').length;
@@ -39,7 +41,7 @@ const SingleGameCard = ({ account }) => {
         </div>
         <div className="flex gap-2">
         <p className="text-xl font-bold text-neutral mt-2">
-          ${account.final_price}
+          {getCurrencySymbol()} {convertPrice(account.final_price).toLocaleString()}
         </p>
 
         <button 

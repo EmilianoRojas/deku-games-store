@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import { useCurrency } from '../context/CurrencyContext';
 
-const faqItems = [
+const getBaseFaqItems = () => [
   {
     question: '¿CÓMO FUNCIONA?',
     answer: (
@@ -55,34 +56,6 @@ const faqItems = [
     )
   },
   {
-    question: '💳 Nuestros Métodos de Pago 💳',
-    answer: (
-      <>
-        <p>Contamos con las siguientes formas de pago:</p>
-        <div className="divider"></div>
-        <div className="space-y-4">
-          <div>
-            <p className="font-semibold">📌 Transferencia Bancaria</p>
-          </div>
-          <div className="divider"></div>
-          <div>
-            <p className="font-semibold">📌 Pago Movil (Promedio)</p>
-            {/* <ul className="list-disc list-inside mt-2">
-              <li>C.I: 24391294</li>
-              <li>TLF: 04125900162</li>
-              <li>Banco: (0102) Venezuela</li>
-            </ul> */}
-          </div>
-          <div className="divider"></div>
-          <div>
-            <p className="font-semibold">📌 Binance (USDT)</p>
-          </div>
-        </div>
-        {/* <p className="mt-4">¡Elige la opción que más te convenga y disfruta de tus juegos sin complicaciones! 🎮✨</p> */}
-      </>
-    )
-  },
-  {
     question: '⚠️Términos y Condiciones de Garantía⚠️',
     answer: (
       <>
@@ -98,7 +71,6 @@ const faqItems = [
           <li>No intente borrar un juego para descargarlo después</li>
           <li>No se hacen transferencias de cuentas entre consolas</li>
           <li>No descargue otro juego que no esté en la lista del pack que adquirió</li>
-          {/* <li>IMPORTANTE ⚠️: Juegue siempre en modo avión o desconectado de internet (Solo con su usuario personal)</li> */}
         </ol>
         <p className="mt-4">Ofrecemos garantía de 1️⃣ mes. ¿Esto qué quiere decir? Que damos soporte ante algún error, mal uso o falla. Pasado ese tiempo ya no damos ningún soporte a la cuenta.</p>
         <p className="mt-4 font-semibold">NOTA: Sólo aplica al usuario recién comprado.</p>
@@ -121,11 +93,48 @@ const faqItems = [
 ];
 
 const FAQ = () => {
+  const { country } = useCurrency();
   const [openIndex, setOpenIndex] = useState(null);
 
   const toggleAccordion = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
+
+  const paymentMethodsAnswer = (
+    <>
+      <p>Contamos con las siguientes formas de pago:</p>
+      <div className="space-y-4">
+      <div className="divider"></div>
+      <div>
+          {country == 'CL' && (
+            <p className="font-semibold">📌 MercadoPago</p>
+          )}
+          <div className="divider"></div>
+        </div>
+        <div>
+          <p className="font-semibold">📌 Transferencia Bancaria</p>
+        </div>
+        <div>
+          {country !== 'CL' && (
+            <p className="font-semibold">📌 Pago Movil (Promedio)</p>
+          )}
+          <div className="divider"></div>
+        </div>
+        <div>
+          <p className="font-semibold">📌 Crypto (USDT)</p>
+        </div>
+          <div className="divider"></div>
+      </div>
+    </>
+  );
+
+  const faqItems = [
+    ...getBaseFaqItems(),
+    {
+      question: '💳 Nuestros Métodos de Pago 💳',
+      answer: paymentMethodsAnswer
+    }
+  ];
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">
