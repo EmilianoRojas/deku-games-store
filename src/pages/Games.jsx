@@ -32,11 +32,11 @@ const Games = () => {
 
       if (accountsError) throw accountsError;
 
-      // Filter accounts that have exactly one game and no DLCs
+      // Filter accounts that have exactly one game, no DLCs, and nickname contains 'personal'
       const transformedGames = accounts.filter(account => {
         const games = account.account_transactions.filter(t => t.type === 'game');
         const dlcs = account.account_transactions.filter(t => t.type === 'dlc');
-        return games.length === 1 && dlcs.length === 0; // Only single games
+        return games.length === 1 && dlcs.length === 0 && account.nickname.toLowerCase().includes('personal');
       });
 
       // Apply sorting

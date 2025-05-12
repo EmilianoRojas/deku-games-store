@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 const SingleGameCard = ({ account }) => {
   // Get the single game from the account
   const game = account.account_transactions.find(t => t.type === 'game');
-  const dlcCount = account.account_transactions.filter(t => t.type === 'dlc').length;
+  // const dlcCount = account.account_transactions.filter(t => t.type === 'dlc').length;
 
   const handleWhatsAppClick = () => {
     const message = `Hola! Me interesa comprar el juego ${game.item_name} con ID ${account.id}`;
@@ -31,11 +31,11 @@ const SingleGameCard = ({ account }) => {
               ? game.item_name.slice(0, 21) + '...'
               : game.item_name}
           </h3>
-          {dlcCount > 0 && (
+          {/* {dlcCount > 0 && (
             <div className="badge badge-secondary self-start">
               {dlcCount === 1 ? `+${dlcCount} DLC` : `+${dlcCount} DLCs`}
             </div>
-          )}
+          )} */}
         </div>
         <div className="flex gap-2">
         <p className="text-xl font-bold text-neutral mt-2">
