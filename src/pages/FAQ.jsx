@@ -6,7 +6,7 @@ const getBaseFaqItems = () => [
     question: '¿CÓMO FUNCIONA?',
     answer: (
       <>
-        <p>¡Descubre nuestro exclusivo sistema de cuentas primarias para Nintendo Switch! 🎮</p>
+        <p>¡Descubre nuestro exclusivo sistema de cuentas para Switch! 🎮</p>
         <p>Adquiere tus juegos favoritos de manera rápida y económica 🌟.</p>
         <ol className="list-decimal list-inside mt-4">
           <li>Navega en nuestro catálogo y elige el pack de juegos que más te guste 🕹</li>
@@ -21,13 +21,13 @@ const getBaseFaqItems = () => [
     answer: (
       <>
         <p>¡Así es! 🌟</p>
-        <p>Puedes descargar los juegos directamente desde la Eshop oficial de Nintendo 🛒, asegurándote de que no hay ningún riesgo de baneo 🚫 y sin necesidad de chipear tu consola 🔒😊.</p>
+        <p>Puedes descargar los juegos directamente desde los servidores oficiales de Nintendo 🛒, asegurándote de que no hay ningún riesgo de baneo 🚫 y sin necesidad de chipear tu consola 🔒😊.</p>
       </>
     )
   },
   {
     question: '¿CUÁNTO TIEMPO SE TARDA EN VINCULAR LA CUENTA? ⏳',
-    answer: <p>¡En menos de 10 minutos tendrás la cuenta en tu consola!⚡️</p>
+    answer: <p>¡En menos de 15 minutos tendrás la cuenta en tu consola!⚡️</p>
   },
   {
     question: '¿TIENEN REFERENCIAS DE CLIENTES? 🌟',
@@ -45,10 +45,10 @@ const getBaseFaqItems = () => [
       <>
         <p>Puedes comprar desde:</p>
         <ul className="list-disc list-inside mt-4">
-          <li>Venezuela 🇻🇪</li>
+          <li>Chile 🇨🇱</li>
           <li>Colombia 🇨🇴</li>
           <li>Argentina 🇦🇷</li>
-          <li>Chile 🇨🇱</li>
+          <li>Venezuela 🇻🇪</li>
           <li>Estados Unidos 🇺🇸</li>
         </ul>
         <p className="mt-4">📦 Tomamos todos nuestros pedidos de manera online 🖥. ¡Mantente atento! 🚀</p>
@@ -56,13 +56,12 @@ const getBaseFaqItems = () => [
     )
   },
   {
-    question: '⚠️Términos y Condiciones de Garantía⚠️',
+    question: 'Términos y Condiciones de Garantía',
     answer: (
       <>
         <p>Asegúrate de contar con WiFi y suficiente espacio en la memoria para descargar los juegos.</p>
         <ol className="list-decimal list-inside mt-4 space-y-2">
           <li>No eliminar la cuenta comprada</li>
-          <li>No entrar más de una (1) vez a la EShop</li>
           <li>Jugar con su usuario personal</li>
           <li>No cancelar las descargas manualmente</li>
           <li>No intentar cambiar información de la cuenta</li>
@@ -72,8 +71,6 @@ const getBaseFaqItems = () => [
           <li>No se hacen transferencias de cuentas entre consolas</li>
           <li>No descargue otro juego que no esté en la lista del pack que adquirió</li>
         </ol>
-        <p className="mt-4">Ofrecemos garantía de 1️⃣ mes. ¿Esto qué quiere decir? Que damos soporte ante algún error, mal uso o falla. Pasado ese tiempo ya no damos ningún soporte a la cuenta.</p>
-        <p className="mt-4 font-semibold">NOTA: Sólo aplica al usuario recién comprado.</p>
       </>
     )
   },
