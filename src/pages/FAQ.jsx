@@ -40,7 +40,7 @@ const getBaseFaqItems = () => [
     )
   },
   {
-    question: '🌍 ¿EN QUÉ PAÍS PUEDO COMPRAR? 🌍',
+    question: '¿EN QUÉ PAÍS PUEDO COMPRAR? 🌍',
     answer: (
       <>
         <p>Puedes comprar desde:</p>
@@ -75,7 +75,7 @@ const getBaseFaqItems = () => [
     )
   },
   {
-    question: '⚠️ Importante: Actualización de Nintendo ⚠️',
+    question: 'Importante: Actualización de Nintendo ⚠️',
     answer: (
       <>
         <p>Estimado/a cliente,</p>
@@ -128,7 +128,7 @@ const FAQ = () => {
   const faqItems = [
     ...getBaseFaqItems(),
     {
-      question: '💳 Nuestros Métodos de Pago 💳',
+      question: 'Nuestros Métodos de Pago 💳',
       answer: paymentMethodsAnswer
     }
   ];
