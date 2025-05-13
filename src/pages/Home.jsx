@@ -44,7 +44,7 @@ const Home = () => {
       // Filter single games and sort by price
       const filteredSingleGames = data
         .filter(account => {
-          const games = account.account_transactions.filter(t => t.type === 'game' && t.featured === true);
+          const games = account.account_transactions.filter(t => t.type === 'game' && account.nickname.includes('personal'));
           return games.length === 1; // Only single games
         })
         .sort((a, b) => a.final_price - b.final_price)
