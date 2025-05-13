@@ -100,16 +100,18 @@ const FAQ = () => {
   const paymentMethodsAnswer = (
     <>
       <p>Contamos con las siguientes formas de pago:</p>
-      <div className="space-y-4">
-      <div className="divider"></div>
-      <div>
+      <div className="mt-4">
+        <div>
           {country == 'CL' && (
-            <p className="font-semibold">📌 MercadoPago</p>
+            <>
+              <p className="font-semibold mt-4">📌 MercadoPago</p>
+              <div className="divider"></div>
+            </>
           )}
-          <div className="divider"></div>
         </div>
         <div>
           <p className="font-semibold">📌 Transferencia Bancaria</p>
+          <div className="divider"></div>
         </div>
         <div>
           {country !== 'CL' && (
@@ -119,8 +121,11 @@ const FAQ = () => {
         </div>
         <div>
           <p className="font-semibold">📌 Crypto (USDT)</p>
-        </div>
           <div className="divider"></div>
+        </div>
+        <div className="mb-4">
+          <p className="font-semibold">📌 Paypal</p>
+        </div>
       </div>
     </>
   );
